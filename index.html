@@ -26,8 +26,6 @@
     line-height: 1.6;
   }
   ::selection { background: var(--accent); color: #000; }
-
-  /* Scanline overlay */
   body::before {
     content: '';
     position: fixed;
@@ -36,7 +34,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -67,10 +64,20 @@
     transition: color 0.2s;
   }
   nav ul a:hover { color: var(--accent); }
-
+  .lang-switch {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+  }
+  .lang-switch:hover { border-color: var(--accent); color: var(--accent); }
   section { position: relative; z-index: 1; }
-
-  /* Hero */
   #hero {
     min-height: 100vh;
     display: flex;
@@ -126,20 +133,10 @@
     cursor: pointer;
     border: none;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-weight: 700;
-  }
+  .btn-primary { background: var(--accent); color: #000; font-weight: 700; }
   .btn-primary:hover { background: #00b8d9; transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* Status badge */
   .status-badge {
     display: inline-flex;
     align-items: center;
@@ -159,17 +156,8 @@
     border-radius: 50%;
     animation: pulse 2s infinite;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* Sections */
-  .section-wrap {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 5rem 2.5rem;
-  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .section-wrap { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; }
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -181,22 +169,8 @@
     align-items: center;
     gap: 10px;
   }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    max-width: 200px;
-  }
-  h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--heading);
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  /* Skills */
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 200px; }
+  h2 { font-size: 2.2rem; font-weight: 800; color: var(--heading); margin-bottom: 2.5rem; letter-spacing: -0.02em; }
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -206,10 +180,7 @@
     border-radius: 8px;
     overflow: hidden;
   }
-  .skill-group {
-    background: var(--bg2);
-    padding: 1.5rem;
-  }
+  .skill-group { background: var(--bg2); padding: 1.5rem; }
   .skill-group-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -228,13 +199,7 @@
     border-radius: 3px;
     padding: 3px 10px;
   }
-
-  /* Projects */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
   .project-card {
     background: var(--bg2);
     border: 1px solid var(--border);
@@ -255,24 +220,9 @@
   }
   .project-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
   .project-card:hover::before { opacity: 1; }
-  .project-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-  }
-  .project-title {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--heading);
-    margin-bottom: 0.5rem;
-  }
-  .project-desc {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
+  .project-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.75rem; }
+  .project-title { font-size: 1.05rem; font-weight: 600; color: var(--heading); margin-bottom: 0.5rem; }
+  .project-desc { font-size: 14px; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
   .project-tag {
     font-family: 'JetBrains Mono', monospace;
@@ -283,28 +233,11 @@
     border-radius: 3px;
     padding: 2px 8px;
   }
-  .project-link {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
+  .project-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; }
   .project-link:hover { text-decoration: underline; }
-
-  /* About */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
-  .about-text p {
-    color: var(--muted);
-    margin-bottom: 1rem;
-    font-size: 15px;
-  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 15px; }
   .about-text p strong { color: var(--text); font-weight: 600; }
   .cert-list { list-style: none; }
   .cert-list li {
@@ -317,11 +250,7 @@
     align-items: center;
     gap: 8px;
   }
-  .cert-list li::before {
-    content: '▸';
-    color: var(--accent);
-    font-size: 10px;
-  }
+  .cert-list li::before { content: '▸'; color: var(--accent); font-size: 10px; }
   .cert-list-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -330,14 +259,8 @@
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
-
-  /* Contact */
   #contact { border-top: 1px solid var(--border); }
-  .contact-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+  .contact-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
   .contact-item {
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
@@ -352,16 +275,7 @@
     gap: 8px;
   }
   .contact-item:hover { border-color: var(--accent); color: var(--accent); }
-
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-  }
-
+  footer { text-align: center; padding: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
   @media (max-width: 600px) {
     nav ul { display: none; }
     #hero { padding: 0 1.25rem; }
@@ -375,44 +289,45 @@
 <nav>
   <div class="nav-logo"><span>~/</span>viktor-vahtra</div>
   <ul>
-    <li><a href="#about">Meist</a></li>
-    <li><a href="#skills">Oskused</a></li>
-    <li><a href="#projects">Projektid</a></li>
-    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#about" data-et="Meist" data-en="About">Meist</a></li>
+    <li><a href="#skills" data-et="Oskused" data-en="Skills">Oskused</a></li>
+    <li><a href="#projects" data-et="Projektid" data-en="Projects">Projektid</a></li>
+    <li><a href="#contact" data-et="Kontakt" data-en="Contact">Kontakt</a></li>
   </ul>
+  <button class="lang-switch" onclick="toggleLang()">EN</button>
 </nav>
 
 <section id="hero">
   <div class="hero-content">
     <div class="status-badge">
       <span class="status-dot"></span>
-      Otsib võimalusi
+      <span data-et="Otsib võimalusi" data-en="Open to opportunities">Otsib võimalusi</span>
     </div>
     <div class="hero-tag">Networking &amp; Sysadmin</div>
     <h1>Viktor<br><span class="accent">Vahtra</span></h1>
-    <p class="hero-desc">IT-spetsialist, kes ehitab usaldusväärseid võrke ja haldab servereid. Huvitun automatiseerimisest, Linuxist ja turvalisusest.</p>
+    <p class="hero-desc" data-et="IT-spetsialist, kes ehitab usaldusväärseid võrke ja haldab servereid. Huvitun automatiseerimisest, Linuxist ja turvalisusest." data-en="IT specialist building reliable networks and managing servers. Passionate about automation, Linux and cybersecurity.">IT-spetsialist, kes ehitab usaldusväärseid võrke ja haldab servereid. Huvitun automatiseerimisest, Linuxist ja turvalisusest.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">Vaata projekte</a>
-      <a href="#contact" class="btn btn-outline">Võta ühendust</a>
+      <a href="#projects" class="btn btn-primary" data-et="Vaata projekte" data-en="View projects">Vaata projekte</a>
+      <a href="#contact" class="btn btn-outline" data-et="Võta ühendust" data-en="Get in touch">Võta ühendust</a>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="section-wrap">
-    <div class="section-label">01 — Meist</div>
-    <h2>Kes ma olen</h2>
+    <div class="section-label" data-et="01 — Meist" data-en="01 — About">01 — Meist</div>
+    <h2 data-et="Kes ma olen" data-en="Who I am">Kes ma olen</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Olen IT-tudeng / spetsialist, kes on kirglik <strong>võrgutehnika</strong> ja <strong>serverihalduse</strong> vastu. Mulle meeldib lahendada keerulisi probleeme ja ehitada töökindlaid süsteeme.</p>
-        <p>Kogemus nii <strong>Linuxi</strong> kui <strong>Windowsi</strong> serveritega, võrkude konfigureerimisega (VLAN, routing, firewall) ja monitoorimislahenduste ülesseadmisega.</p>
-        <p>Praegu õpin <strong>[Kool/Ülikool]</strong> ja otsin praktikavõimalusi või esimest töökohta IT valdkonnas.</p>
+        <p data-et="Olen IT-tudeng / spetsialist, kes on kirglik <strong>võrgutehnika</strong> ja <strong>serverihalduse</strong> vastu. Mulle meeldib lahendada keerulisi probleeme ja ehitada töökindlaid süsteeme." data-en="I'm an IT student passionate about <strong>networking</strong> and <strong>server administration</strong>. I enjoy solving complex problems and building reliable systems.">Olen IT-tudeng / spetsialist, kes on kirglik <strong>võrgutehnika</strong> ja <strong>serverihalduse</strong> vastu. Mulle meeldib lahendada keerulisi probleeme ja ehitada töökindlaid süsteeme.</p>
+        <p data-et="Kogemus nii <strong>Linuxi</strong> kui <strong>Windowsi</strong> serveritega, võrkude konfigureerimisega (VLAN, routing, firewall) ja monitoorimislahenduste ülesseadmisega." data-en="Experience with both <strong>Linux</strong> and <strong>Windows</strong> servers, network configuration (VLAN, routing, firewall) and setting up monitoring solutions.">Kogemus nii <strong>Linuxi</strong> kui <strong>Windowsi</strong> serveritega, võrkude konfigureerimisega (VLAN, routing, firewall) ja monitoorimislahenduste ülesseadmisega.</p>
+        <p data-et="Praegu õpin <strong>Tartu Rakenduslik Kolledž</strong> IT erialal ja otsin praktikavõimalusi või esimest töökohta IT valdkonnas." data-en="Currently studying IT at <strong>Tartu University of Applied Sciences</strong> and looking for internship opportunities or a first job in IT.">Praegu õpin <strong>Tartu Rakenduslik Kolledž</strong> IT erialal ja otsin praktikavõimalusi või esimest töökohta IT valdkonnas.</p>
       </div>
       <div>
-        <div class="cert-list-title">Sertifikaadid &amp; haridus</div>
+        <div class="cert-list-title" data-et="Sertifikaadid &amp; haridus" data-en="Certifications &amp; education">Sertifikaadid &amp; haridus</div>
         <ul class="cert-list">
-          <li>Kool / eriala — aasta</li>
-          <li>Cisco CCNA (plaanis)</li>
+          <li data-et="Tartu Rakenduslik Kolledž — IT" data-en="Tartu University of Applied Sciences — IT">Tartu Rakenduslik Kolledž — IT</li>
+          <li data-et="Cisco CCNA (plaanis)" data-en="Cisco CCNA (planned)">Cisco CCNA (plaanis)</li>
           <li>CompTIA Network+</li>
           <li>Linux Essentials</li>
         </ul>
@@ -423,11 +338,11 @@
 
 <section id="skills">
   <div class="section-wrap">
-    <div class="section-label">02 — Oskused</div>
-    <h2>Tehnoloogiad</h2>
+    <div class="section-label" data-et="02 — Oskused" data-en="02 — Skills">02 — Oskused</div>
+    <h2 data-et="Tehnoloogiad" data-en="Technologies">Tehnoloogiad</h2>
     <div class="skills-grid">
       <div class="skill-group">
-        <div class="skill-group-title">Võrgud</div>
+        <div class="skill-group-title" data-et="Võrgud" data-en="Networking">Võrgud</div>
         <div class="skill-tags">
           <span class="skill-tag">TCP/IP</span>
           <span class="skill-tag">VLAN</span>
@@ -438,7 +353,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Süsteemid</div>
+        <div class="skill-group-title" data-et="Süsteemid" data-en="Systems">Süsteemid</div>
         <div class="skill-tags">
           <span class="skill-tag">Linux</span>
           <span class="skill-tag">Windows Server</span>
@@ -448,7 +363,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Tööriistad</div>
+        <div class="skill-group-title" data-et="Tööriistad" data-en="Tools">Tööriistad</div>
         <div class="skill-tags">
           <span class="skill-tag">Zabbix</span>
           <span class="skill-tag">Docker</span>
@@ -458,7 +373,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Riistvara</div>
+        <div class="skill-group-title" data-et="Riistvara" data-en="Hardware">Riistvara</div>
         <div class="skill-tags">
           <span class="skill-tag">Cisco</span>
           <span class="skill-tag">MikroTik</span>
@@ -472,14 +387,14 @@
 
 <section id="projects">
   <div class="section-wrap">
-    <div class="section-label">03 — Projektid</div>
-    <h2>Mida olen teinud</h2>
+    <div class="section-label" data-et="03 — Projektid" data-en="03 — Projects">03 — Projektid</div>
+    <h2 data-et="Mida olen teinud" data-en="What I've built">Mida olen teinud</h2>
     <div class="projects-grid">
 
       <div class="project-card">
         <div class="project-num">// 001</div>
-        <div class="project-title">Zabbix Monitooring</div>
-        <p class="project-desc">Zabbix monitooringu serveri seadistamine Debian VM-il. MySQL andmebaas, agendi konfiguratsioon ja võrguseadmete jälgimine.</p>
+        <div class="project-title" data-et="Zabbix Monitooring" data-en="Zabbix Monitoring">Zabbix Monitooring</div>
+        <p class="project-desc" data-et="Zabbix monitooringu serveri seadistamine Debian VM-il. MySQL andmebaas, agendi konfiguratsioon ja võrguseadmete jälgimine." data-en="Set up a Zabbix monitoring server on a Debian VM. MySQL database, agent configuration and network device monitoring.">Zabbix monitooringu serveri seadistamine Debian VM-il. MySQL andmebaas, agendi konfiguratsioon ja võrguseadmete jälgimine.</p>
         <div class="project-tags">
           <span class="project-tag">Debian</span>
           <span class="project-tag">Zabbix</span>
@@ -490,8 +405,8 @@
 
       <div class="project-card">
         <div class="project-num">// 002</div>
-        <div class="project-title">Linux Praktikum</div>
-        <p class="project-desc">Debian virtuaalmasina seadistamine — põhikäsud, SSH, SCP failiedastus, teenuste haldus ja APT paketihaldur.</p>
+        <div class="project-title" data-et="Linux Praktikum" data-en="Linux Lab">Linux Praktikum</div>
+        <p class="project-desc" data-et="Debian virtuaalmasina seadistamine — põhikäsud, SSH, SCP failiedastus, teenuste haldus ja APT paketihaldur." data-en="Debian VM setup — core commands, SSH, SCP file transfer, service management and APT package manager.">Debian virtuaalmasina seadistamine — põhikäsud, SSH, SCP failiedastus, teenuste haldus ja APT paketihaldur.</p>
         <div class="project-tags">
           <span class="project-tag">Linux</span>
           <span class="project-tag">Bash</span>
@@ -504,7 +419,7 @@
       <div class="project-card">
         <div class="project-num">// 003</div>
         <div class="project-title">Minecraft Server</div>
-        <p class="project-desc">PaperMC serveri seadistamine ja haldamine. Port forwarding, mängijate õiguste haldus ja serveri konfiguratsioon.</p>
+        <p class="project-desc" data-et="PaperMC serveri seadistamine ja haldamine. Port forwarding, mängijate õiguste haldus ja serveri konfiguratsioon." data-en="Set up and managed a PaperMC server. Port forwarding, player permissions management and server configuration.">PaperMC serveri seadistamine ja haldamine. Port forwarding, mängijate õiguste haldus ja serveri konfiguratsioon.</p>
         <div class="project-tags">
           <span class="project-tag">Java</span>
           <span class="project-tag">Linux</span>
@@ -515,8 +430,8 @@
 
       <div class="project-card">
         <div class="project-num">// 004</div>
-        <div class="project-title">IT Tugi — Arvutite Parandamine</div>
-        <p class="project-desc">Vabatahtlik IT-tugi põhikoolis. Tarkvara ja riistvara diagnostika, viiruste eemaldamine, võrguprobleemide lahendamine.</p>
+        <div class="project-title" data-et="IT Tugi — Arvutite Parandamine" data-en="IT Support — PC Repair">IT Tugi — Arvutite Parandamine</div>
+        <p class="project-desc" data-et="Vabatahtlik IT-tugi põhikoolis. Tarkvara ja riistvara diagnostika, viiruste eemaldamine, võrguprobleemide lahendamine." data-en="Volunteer IT support at school. Software and hardware diagnostics, malware removal, network troubleshooting.">Vabatahtlik IT-tugi põhikoolis. Tarkvara ja riistvara diagnostika, viiruste eemaldamine, võrguprobleemide lahendamine.</p>
         <div class="project-tags">
           <span class="project-tag">Windows</span>
           <span class="project-tag">Hardware</span>
@@ -531,19 +446,32 @@
 
 <section id="contact">
   <div class="section-wrap">
-    <div class="section-label">04 — Kontakt</div>
-    <h2>Võta ühendust</h2>
+    <div class="section-label" data-et="04 — Kontakt" data-en="04 — Contact">04 — Kontakt</div>
+    <h2 data-et="Võta ühendust" data-en="Get in touch">Võta ühendust</h2>
     <div class="contact-grid">
-      <a href="mailto:email@example.com" class="contact-item">✉ email@example.com</a>
-      <a href="https://github.com/kasutajanimi" class="contact-item">⌥ github.com/kasutajanimi</a>
-      <a href="https://linkedin.com/in/kasutajanimi" class="contact-item">in linkedin.com/in/...</a>
+      <a href="mailto:viktorvahtra@gmail.com" class="contact-item">✉ viktorvahtra@gmail.com</a>
+      <a href="https://github.com/Anviktor2411" class="contact-item">⌥ github.com/Anviktor2411</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Ehitatud HTML/CSS-ga · Hostitud GitHub Pages-il</p>
+  <p data-et="Ehitatud HTML/CSS-ga · Hostitud GitHub Pages-il" data-en="Built with HTML/CSS · Hosted on GitHub Pages">Ehitatud HTML/CSS-ga · Hostitud GitHub Pages-il</p>
 </footer>
+
+<script>
+  let currentLang = 'et';
+  function toggleLang() {
+    currentLang = currentLang === 'et' ? 'en' : 'et';
+    const btn = document.querySelector('.lang-switch');
+    btn.textContent = currentLang === 'et' ? 'EN' : 'ET';
+    document.querySelectorAll('[data-et]').forEach(el => {
+      const text = el.getAttribute('data-' + currentLang);
+      if (text) el.innerHTML = text;
+    });
+    document.documentElement.lang = currentLang;
+  }
+</script>
 
 </body>
 </html>
