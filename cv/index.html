@@ -1,92 +1,385 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viktor Vahtra - CV</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; margin: -40px -40px 30px -40px; text-align: center; border-radius: 8px 8px 0 0; }
-        h1 { margin-bottom: 10px; font-size: 2.5em; }
-        .subtitle { font-size: 1.2em; margin-bottom: 15px; opacity: 0.95; }
-        .contact { font-size: 0.95em; }
-        .contact span { margin: 0 15px; }
-        h2 { margin-top: 30px; margin-bottom: 15px; color: #2c3e50; font-size: 1.5em; border-bottom: 3px solid #667eea; padding-bottom: 10px; }
-        .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
-        .skill-box { background: #f9f9f9; padding: 15px; border-left: 4px solid #667eea; border-radius: 4px; }
-        .skill-box strong { color: #667eea; }
-        img { max-width: 300px; height: auto; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .entry { margin-bottom: 20px; }
-        .entry strong { color: #2c3e50; }
-        .entry-subtitle { color: #667eea; font-weight: 500; font-size: 0.95em; }
-        .back-link { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #667eea; color: white; text-decoration: none; border-radius: 5px; transition: all 0.3s; }
-        .back-link:hover { background: #764ba2; transform: translateX(-3px); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Vahtra — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14101c;
+    --cream: #fdf6ec;
+    --violet: #6425e0;
+    --coral: #ff4d5e;
+    --tangerine: #ff8c22;
+    --lime: #c9f24a;
+    --sky: #1fb6ff;
+    --paper: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1rem 4rem;
+  }
+  ::selection { background: var(--lime); color: var(--ink); }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  .bar { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 1rem; flex-wrap: wrap; }
+  .bar a, .bar button {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700; font-size: 13px;
+    text-transform: uppercase; letter-spacing: .04em;
+    padding: 9px 18px;
+    border: 3px solid var(--ink);
+    background: var(--paper); color: var(--ink);
+    cursor: pointer; text-decoration: none;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .bar a:hover, .bar button:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
+  .bar .go { background: var(--lime); }
+
+  .hero {
+    background: var(--violet);
+    border: 4px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    padding: 2.5rem; position: relative; overflow: hidden;
+    margin-bottom: 3.25rem;
+  }
+  .hero::after {
+    content: ''; position: absolute; right: -70px; top: -70px;
+    width: 240px; height: 240px; background: var(--tangerine);
+    border-radius: 50%; opacity: .9;
+  }
+  .hero-in { position: relative; z-index: 2; display: flex; gap: 2rem; align-items: flex-end; flex-wrap: wrap; }
+  .photo {
+    width: 160px; height: 200px; object-fit: cover;
+    border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--lime); flex-shrink: 0;
+  }
+  .hero h1 {
+    font-family: 'Archivo', sans-serif; font-weight: 900;
+    font-size: clamp(2.6rem, 9vw, 5.2rem); line-height: .88;
+    color: var(--paper); letter-spacing: -.035em; text-transform: uppercase;
+  }
+  .hero h1 em { font-style: normal; color: var(--lime); }
+  .hero .role {
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1rem;
+    color: var(--paper); text-transform: uppercase; letter-spacing: .06em; margin-top: 1rem;
+  }
+  .pill {
+    display: inline-block; background: var(--lime); color: var(--ink);
+    font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .06em;
+    padding: 6px 14px; border: 3px solid var(--ink); margin-top: 1rem;
+  }
+  .tagline {
+    position: relative; z-index: 2; margin-top: 1.75rem;
+    color: var(--paper); font-size: 1.02rem; max-width: 640px; opacity: .95;
+  }
+
+  section { margin-bottom: 3.25rem; }
+  h2 {
+    font-family: 'Archivo', sans-serif; font-weight: 900;
+    font-size: clamp(1.6rem, 5vw, 2.4rem); text-transform: uppercase;
+    letter-spacing: -.02em; margin-bottom: 1.4rem;
+    display: flex; align-items: center; gap: 14px;
+  }
+  h2 .num { background: var(--ink); color: var(--lime); font-size: .95rem; padding: 3px 10px; letter-spacing: 0; }
+  h2::after { content: ''; flex: 1; height: 4px; background: var(--ink); }
+  .subnote {
+    font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .06em; color: #7a7286;
+    margin: -0.9rem 0 1.1rem;
+  }
+
+  .card {
+    background: var(--paper); border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink); padding: 1.35rem 1.5rem; margin-bottom: 1.1rem;
+  }
+  .card.v { box-shadow: 6px 6px 0 var(--violet); }
+  .card.c { box-shadow: 6px 6px 0 var(--coral); }
+  .card.t { box-shadow: 6px 6px 0 var(--tangerine); }
+  .card.s { box-shadow: 6px 6px 0 var(--sky); }
+  .card h3 {
+    font-family: 'Archivo', sans-serif; font-weight: 800;
+    font-size: 1.12rem; text-transform: uppercase; letter-spacing: -.01em;
+  }
+  .meta {
+    font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .05em; color: var(--violet); margin: 3px 0 8px;
+  }
+  .card p { font-size: .95rem; }
+  .card ul { margin: .5rem 0 0 0; padding-left: 0; list-style: none; }
+  .card li { font-size: .93rem; padding-left: 20px; position: relative; margin-bottom: 3px; }
+  .card li::before {
+    content: '▸'; position: absolute; left: 4px; color: var(--violet); font-weight: 700;
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+
+  .skillbox { border: 3px solid var(--ink); padding: 1.1rem 1.2rem; background: var(--paper); }
+  .skillbox .lab {
+    font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 13px;
+    text-transform: uppercase; letter-spacing: .06em; padding: 4px 10px;
+    display: inline-block; margin-bottom: .9rem; border: 3px solid var(--ink);
+  }
+  .lab.a { background: var(--coral); color: var(--paper); }
+  .lab.b { background: var(--violet); color: var(--paper); }
+  .lab.c { background: var(--tangerine); }
+  .lab.d { background: var(--lime); }
+  .lab.e { background: var(--sky); color: var(--paper); }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag { font-size: 12.5px; font-weight: 500; padding: 3px 10px; border: 2px solid var(--ink); background: var(--cream); }
+
+  .contact { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 4px solid var(--ink); }
+  .contact a, .contact div {
+    padding: 1rem 1.2rem; border-right: 3px solid var(--ink); border-bottom: 3px solid var(--ink);
+    text-decoration: none; color: var(--ink); background: var(--paper); transition: background .15s;
+  }
+  .contact a:hover { background: var(--lime); }
+  .contact .lb {
+    font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--violet); display: block;
+  }
+  .contact .vl { font-weight: 500; word-break: break-all; font-size: .93rem; }
+
+  .langrow { display: flex; align-items: center; gap: 12px; margin-bottom: .7rem; flex-wrap: wrap; }
+  .langrow .nm { font-family: 'Archivo', sans-serif; font-weight: 800; text-transform: uppercase; width: 110px; font-size: 14px; }
+  .dots { display: flex; gap: 5px; }
+  .dot { width: 16px; height: 16px; border: 2.5px solid var(--ink); }
+  .dot.on { background: var(--violet); }
+  .lvl { font-size: 13px; color: #5b5568; }
+
+  footer {
+    margin-top: 3rem; text-align: center;
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .08em; color: #7a7286;
+  }
+
+  @media (max-width: 680px) {
+    body { padding: 1rem .75rem 3rem; }
+    .hero { padding: 1.5rem; box-shadow: 6px 6px 0 var(--ink); }
+    .hero-in { gap: 1.25rem; }
+    .photo { width: 120px; height: 150px; }
+    .grid2, .contact { grid-template-columns: 1fr; }
+    .contact a, .contact div { border-right: none; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <a href="../" class="back-link">← Tagasi e-portfoliosse</a>
-        
-        <div class="header">
-            <h1>Viktor Vahtra</h1>
-            <div class="subtitle">IT-süsteemide administratsioon</div>
-            <div class="contact">
-                <span>📍 Võru, Eesti</span>
-                <span>✉️ viktor.vahtra@voco.ee</span>
-            </div>
-        </div>
+<div class="wrap">
 
-        <img src="https://i.imgur.com/VztyWMx.jpeg" alt="Viktor Vahtra" style="max-width: 300px; display: block; margin: 30px auto; border-radius: 8px;">
+  <div class="bar">
+    <a href="../" data-et="← Portfoolio" data-en="← Portfolio">← Portfoolio</a>
+    <button onclick="toggleLang()" id="langBtn">EN</button>
+    <a class="go" href="Viktor_Vahtra_CV.pdf" target="_blank">↓ PDF</a>
+  </div>
 
-        <h2>Haridus</h2>
-        <div class="entry">
-            <strong>IT-võrguside ja süsteemide administratsioon</strong>
-            <div class="entry-subtitle">Tartu Rakenduslik Kolledž (ITS24) — 2024 - Praegu</div>
-            <p>Windows Server, Linux/BSD, võrgundus, kübernõutus ja praktilised laboritööd.</p>
-        </div>
-
-        <h2>Tehnilised Teadmised</h2>
-        <div class="skills">
-            <div class="skill-box">
-                <strong>Operatsioonisüsteemid:</strong><br>
-                Windows Server, Linux, BSD
-            </div>
-            <div class="skill-box">
-                <strong>Võrgundus:</strong><br>
-                TCP/IP, DNS, DHCP, Firewall, VPN
-            </div>
-            <div class="skill-box">
-                <strong>Kübernõutus:</strong><br>
-                Turbesüsteemid, Auditeerimine, Hardening
-            </div>
-            <div class="skill-box">
-                <strong>Programmeerimiskeeled:</strong><br>
-                Python, JavaScript, Bash
-            </div>
-        </div>
-
-        <h2>Projektid</h2>
-        <div class="entry">
-            <strong>E-portfolio Veebisait</strong>
-            <p>Bilinguaalne (eesti/inglise) e-portfolio veebisait admin-paneeliga. <a href="https://github.com/Anviktor2411">GitHub</a></p>
-        </div>
-        <div class="entry">
-            <strong>X-Plane 12 Plugin Tööstad</strong>
-            <p>Python tööstad X-Plane 12 pistikute juhtimiseks (XPUIPC IP Manager)</p>
-        </div>
-        <div class="entry">
-            <strong>Zabbix Monitoring</strong>
-            <p>Monitooringu serveri seadistamine Debian VM-il koos MySQL andmebaasiga.</p>
-        </div>
-
-        <h2>Kontakt</h2>
-        <div class="contact">
-            <p>📧 <a href="mailto:viktor.vahtra@voco.ee">viktor.vahtra@voco.ee</a></p>
-            <p>🔗 <a href="https://github.com/Anviktor2411">GitHub: Anviktor2411</a></p>
-            <p>💼 <a href="https://linkedin.com/in/viktor-vahtra-35840b410">LinkedIn</a></p>
-        </div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-in">
+      <img class="photo" src="https://i.imgur.com/VztyWMx.jpeg" alt="Viktor Vahtra">
+      <div>
+        <h1>Viktor<br><em>Vahtra</em></h1>
+        <div class="role" data-et="Helpdesk · Süsteemiadministratsioon · Võrgud" data-en="Helpdesk · Systems administration · Networks">Helpdesk · Süsteemiadministratsioon · Võrgud</div>
+        <div class="pill" data-et="Otsib praktikakohta · vaba 2026" data-en="Open to internships · available 2026">Otsib praktikakohta · vaba 2026</div>
+      </div>
     </div>
+    <p class="tagline" data-et="IT-süsteemide nooremspetsialisti tudeng (lõpetan 2027). Parandan arvuteid oma kuulutuste kaudu, olen andnud IT-abi endises koolis ja pean kodus Proxmoxi laborit. Otsin kohta, kus saaks kasutajaid päriselt aidata ja servereid hallata." data-en="IT systems student, graduating 2027. I repair computers through my own ads, have given IT support at my former school, and run a Proxmox lab at home. Looking for a place where I can help real users and manage real servers.">IT-süsteemide nooremspetsialisti tudeng (lõpetan 2027). Parandan arvuteid oma kuulutuste kaudu, olen andnud IT-abi endises koolis ja pean kodus Proxmoxi laborit. Otsin kohta, kus saaks kasutajaid päriselt aidata ja servereid hallata.</p>
+  </div>
+
+  <!-- KONTAKT -->
+  <section>
+    <h2><span class="num">01</span><span data-et="Kontakt" data-en="Contact">Kontakt</span></h2>
+    <div class="contact">
+      <div><span class="lb" data-et="Asukoht" data-en="Location">Asukoht</span><span class="vl" data-et="Võru, Eesti" data-en="Võru, Estonia">Võru, Eesti</span></div>
+      <a href="mailto:viktorvahtra@gmail.com"><span class="lb">Email</span><span class="vl">viktorvahtra@gmail.com</span></a>
+      <a href="https://github.com/Anviktor2411" target="_blank"><span class="lb">GitHub</span><span class="vl">Anviktor2411</span></a>
+      <a href="https://www.linkedin.com/in/viktor-vahtra-35840b410/" target="_blank"><span class="lb">LinkedIn</span><span class="vl">viktor-vahtra</span></a>
+    </div>
+  </section>
+
+  <!-- KOGEMUS -->
+  <section>
+    <h2><span class="num">02</span><span data-et="Kogemus" data-en="Experience">Kogemus</span></h2>
+    <div class="card c">
+      <h3 data-et="Arvutiremont ja IT-abi" data-en="Computer repair and IT support">Arvutiremont ja IT-abi</h3>
+      <div class="meta" data-et="Iseseisev · oma kuulutuste kaudu" data-en="Independent · through my own ads">Iseseisev · oma kuulutuste kaudu</div>
+      <p data-et="Võtan kuulutuste kaudu vastu tellimusi eraklientidelt ja lahendan need algusest lõpuni — diagnoos, parandus, üleandmine koos selgitusega." data-en="I take on jobs from private clients through my own ads and handle them end to end — diagnosis, repair, and handover with an explanation.">Võtan kuulutuste kaudu vastu tellimusi eraklientidelt ja lahendan need algusest lõpuni — diagnoos, parandus, üleandmine koos selgitusega.</p>
+      <ul>
+        <li data-et="Windowsi puhas paigaldus ja seadistus kliendi arvutisse" data-en="Clean Windows installation and setup on a client machine">Windowsi puhas paigaldus ja seadistus kliendi arvutisse</li>
+        <li data-et="WiFi-ühenduse tõrke diagnoosimine ja parandamine" data-en="Diagnosed and fixed a WiFi connectivity fault">WiFi-ühenduse tõrke diagnoosimine ja parandamine</li>
+        <li data-et="Vana, mittekäivituva arvuti taastamine töökorda" data-en="Brought an old, non-booting computer back to working order">Vana, mittekäivituva arvuti taastamine töökorda</li>
+        <li data-et="Probleemi selgitamine kliendile arusaadavas keeles" data-en="Explaining the problem to the client in plain language">Probleemi selgitamine kliendile arusaadavas keeles</li>
+      </ul>
+    </div>
+    <div class="card v">
+      <h3 data-et="IT-tugi koolis" data-en="IT support at school">IT-tugi koolis</h3>
+      <div class="meta" data-et="Vabatahtlik · endine kool" data-en="Volunteer · former school">Vabatahtlik · endine kool</div>
+      <p data-et="Aitasin kooli IT-poolel: arvutite tõrkeotsing, tarkvara paigaldus ja seadistamine ning igapäevane abi õpetajatele ja õpilastele." data-en="Helped on the school's IT side: troubleshooting computers, installing and configuring software, and day-to-day help for teachers and students.">Aitasin kooli IT-poolel: arvutite tõrkeotsing, tarkvara paigaldus ja seadistamine ning igapäevane abi õpetajatele ja õpilastele.</p>
+    </div>
+    <div class="card t">
+      <h3 data-et="Kodulabor" data-en="Home lab">Kodulabor</h3>
+      <div class="meta" data-et="Isiklik projekt · pidev" data-en="Personal project · ongoing">Isiklik projekt · pidev</div>
+      <p data-et="Proxmoxil põhinev virtualiseerimiskeskkond, kus katsetan teenuseid enne, kui neid päris töös vaja läheb. Suurem osa allpool loetletud oskustest on siit pärit." data-en="A Proxmox-based virtualisation setup where I try out services before I need them for real. Most of the skills listed below came from here.">Proxmoxil põhinev virtualiseerimiskeskkond, kus katsetan teenuseid enne, kui neid päris töös vaja läheb. Suurem osa allpool loetletud oskustest on siit pärit.</p>
+      <div class="tags" style="margin-top:.7rem"><span class="tag">Proxmox</span><span class="tag">Linux VM</span><span class="tag">Windows VM</span><span class="tag">Networking</span></div>
+    </div>
+    <div class="card s">
+      <h3 data-et="DJ ja muusikaprodutsent — “doesvic”" data-en="DJ and music producer — “doesvic”">DJ ja muusikaprodutsent — “doesvic”</h3>
+      <p data-et="Esinemised ja produktsioon. Tähtajad, tehnika ülesseadmine surve all ja kiire tõrkeotsing live-olukorras — needsamad oskused kuluvad ära ka IT-toes." data-en="Performing and producing. Deadlines, setting up gear under pressure and fast troubleshooting in a live situation — the same skills carry over to IT support.">Esinemised ja produktsioon. Tähtajad, tehnika ülesseadmine surve all ja kiire tõrkeotsing live-olukorras — needsamad oskused kuluvad ära ka IT-toes.</p>
+    </div>
+  </section>
+
+  <!-- HARIDUS -->
+  <section>
+    <h2><span class="num">03</span><span data-et="Haridus" data-en="Education">Haridus</span></h2>
+    <div class="card v">
+      <h3 data-et="IT-süsteemide nooremspetsialist" data-en="IT systems junior specialist">IT-süsteemide nooremspetsialist</h3>
+      <div class="meta" data-et="Tartu Rakenduslik Kolledž · ITS24 · 2024 — 2027" data-en="Tartu Rakenduslik Kolledž · ITS24 · 2024 — 2027">Tartu Rakenduslik Kolledž · ITS24 · 2024 — 2027</div>
+      <p data-et="Võrgundus, Windows Server, Linux/BSD ja küberturve. Iga teema lõpeb praktilise laboriga, mille kohta kirjutan eraldi aruande." data-en="Networking, Windows Server, Linux/BSD and cybersecurity. Every topic ends with a hands-on lab that I document in a written report.">Võrgundus, Windows Server, Linux/BSD ja küberturve. Iga teema lõpeb praktilise laboriga, mille kohta kirjutan eraldi aruande.</p>
+    </div>
+    <div class="card t">
+      <h3 data-et="Sertifikaadid" data-en="Certifications">Sertifikaadid</h3>
+      <div class="tags" style="margin-top:.6rem">
+        <span class="tag">✓ CompTIA Network+</span>
+        <span class="tag">✓ Linux Essentials</span>
+        <span class="tag" style="opacity:.6" data-et="○ Cisco CCNA — plaanis" data-en="○ Cisco CCNA — planned">○ Cisco CCNA — plaanis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OSKUSED -->
+  <section>
+    <h2><span class="num">04</span><span data-et="Oskused" data-en="Skills">Oskused</span></h2>
+    <div class="grid2">
+      <div class="skillbox">
+        <span class="lab a" data-et="Kasutajatugi" data-en="User support">Kasutajatugi</span>
+        <div class="tags">
+          <span class="tag" data-et="Tõrkeotsing" data-en="Troubleshooting">Tõrkeotsing</span>
+          <span class="tag" data-et="Windowsi paigaldus" data-en="Windows deployment">Windowsi paigaldus</span>
+          <span class="tag" data-et="Riistvara vahetus" data-en="Hardware swaps">Riistvara vahetus</span>
+          <span class="tag" data-et="Andmete taastamine" data-en="Data recovery">Andmete taastamine</span>
+          <span class="tag" data-et="Kliendisuhtlus" data-en="Client communication">Kliendisuhtlus</span>
+        </div>
+      </div>
+      <div class="skillbox">
+        <span class="lab b" data-et="Süsteemid" data-en="Systems">Süsteemid</span>
+        <div class="tags">
+          <span class="tag">Windows 10/11</span><span class="tag">Windows Server</span><span class="tag">Debian</span><span class="tag">Ubuntu</span><span class="tag">Proxmox</span><span class="tag">Active Directory</span><span class="tag">Group Policy</span><span class="tag">BSD</span>
+        </div>
+      </div>
+      <div class="skillbox">
+        <span class="lab c" data-et="Võrgundus" data-en="Networking">Võrgundus</span>
+        <div class="tags">
+          <span class="tag">TCP/IP</span><span class="tag">VLAN</span><span class="tag">OSPF/BGP</span><span class="tag">Firewall</span><span class="tag">VPN</span><span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">WiFi</span><span class="tag">Wireshark</span>
+        </div>
+      </div>
+      <div class="skillbox">
+        <span class="lab d" data-et="Turvalisus" data-en="Security">Turvalisus</span>
+        <div class="tags">
+          <span class="tag">Hardening</span><span class="tag">BitLocker</span><span class="tag">MS Defender</span><span class="tag">ESET</span><span class="tag">Backup/Recovery</span>
+        </div>
+      </div>
+      <div class="skillbox" style="grid-column: 1 / -1">
+        <span class="lab e" data-et="Tööriistad ja skriptimine" data-en="Tools and scripting">Tööriistad ja skriptimine</span>
+        <div class="tags">
+          <span class="tag">Zabbix</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">OCS Inventory</span><span class="tag">Spiceworks</span><span class="tag">Bash</span><span class="tag">Python</span><span class="tag">PowerShell</span><span class="tag">HTML/CSS/JS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJEKTID -->
+  <section>
+    <h2><span class="num">05</span><span data-et="Projektid" data-en="Projects">Projektid</span></h2>
+    <div class="subnote" data-et="Kooli laboritööd ja isiklikud projektid" data-en="Coursework labs and personal projects">Kooli laboritööd ja isiklikud projektid</div>
+    <div class="grid2">
+      <div class="card c">
+        <h3 data-et="Zabbix monitooring" data-en="Zabbix monitoring">Zabbix monitooring</h3>
+        <div class="meta" data-et="Kooli laboritöö" data-en="Coursework lab">Kooli laboritöö</div>
+        <p data-et="Zabbix serveri püstitamine Debiani virtuaalmasinal — MySQL andmebaas, agentide seadistus ja võrguseadmete jälgimine koos hoiatustega." data-en="Stood up a Zabbix server on a Debian VM — MySQL backend, agent configuration and network device monitoring with alerting.">Zabbix serveri püstitamine Debiani virtuaalmasinal — MySQL andmebaas, agentide seadistus ja võrguseadmete jälgimine koos hoiatustega.</p>
+        <div class="tags" style="margin-top:.7rem"><span class="tag">Debian</span><span class="tag">Zabbix</span><span class="tag">MySQL</span></div>
+      </div>
+      <div class="card v">
+        <h3 data-et="Linuxi praktikum" data-en="Linux lab">Linuxi praktikum</h3>
+        <div class="meta" data-et="Kooli laboritöö" data-en="Coursework lab">Kooli laboritöö</div>
+        <p data-et="Debiani VM-i seadistus nullist: kasutajad ja õigused, SSH, SCP failiedastus, teenuste haldus systemd-ga ja APT paketihaldus." data-en="Debian VM setup from scratch: users and permissions, SSH, SCP transfers, systemd service management and APT package handling.">Debiani VM-i seadistus nullist: kasutajad ja õigused, SSH, SCP failiedastus, teenuste haldus systemd-ga ja APT paketihaldus.</p>
+        <div class="tags" style="margin-top:.7rem"><span class="tag">Linux</span><span class="tag">Bash</span><span class="tag">SSH</span></div>
+      </div>
+      <div class="card t">
+        <h3 data-et="E-portfoolio" data-en="E-portfolio">E-portfoolio</h3>
+        <div class="meta" data-et="Isiklik projekt" data-en="Personal project">Isiklik projekt</div>
+        <p data-et="Kahekeelne portfooliosait koos admin-paneeliga, majutatud GitHub Pages peal. Kirjutatud puhta HTML/CSS/JS-iga ilma raamistikuta." data-en="Bilingual portfolio site with an admin panel, hosted on GitHub Pages. Written in plain HTML/CSS/JS with no framework.">Kahekeelne portfooliosait koos admin-paneeliga, majutatud GitHub Pages peal. Kirjutatud puhta HTML/CSS/JS-iga ilma raamistikuta.</p>
+        <div class="tags" style="margin-top:.7rem"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">GitHub Pages</span></div>
+      </div>
+      <div class="card s">
+        <h3>PaperMC <span data-et="server" data-en="server">server</span></h3>
+        <div class="meta" data-et="Isiklik projekt" data-en="Personal project">Isiklik projekt</div>
+        <p data-et="Mänguserveri seadistus ja haldus: pordisuunamine, kasutajaõigused, varundus ja jõudluse häälestamine." data-en="Game server setup and administration: port forwarding, user permissions, backups and performance tuning.">Mänguserveri seadistus ja haldus: pordisuunamine, kasutajaõigused, varundus ja jõudluse häälestamine.</p>
+        <div class="tags" style="margin-top:.7rem"><span class="tag">Java</span><span class="tag">Linux</span><span class="tag">Networking</span></div>
+      </div>
+      <div class="card" style="grid-column: 1 / -1">
+        <h3>XPUIPC IP Manager</h3>
+        <div class="meta" data-et="Isiklik projekt" data-en="Personal project">Isiklik projekt</div>
+        <p data-et="Pythoni tööriist X-Plane 12 pluginate IP-seadistuste haldamiseks — väike asi, mis säästab iga kord käsitsi failide muutmist." data-en="A Python tool for managing X-Plane 12 plugin IP settings — a small thing that saves editing config files by hand every time.">Pythoni tööriist X-Plane 12 pluginate IP-seadistuste haldamiseks — väike asi, mis säästab iga kord käsitsi failide muutmist.</p>
+        <div class="tags" style="margin-top:.7rem"><span class="tag">Python</span><span class="tag">CLI</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEELED JA LISAINFO -->
+  <section>
+    <h2><span class="num">06</span><span data-et="Keeled &amp; lisainfo" data-en="Languages &amp; extras">Keeled &amp; lisainfo</span></h2>
+    <div class="grid2">
+      <div class="skillbox">
+        <span class="lab b" data-et="Keeled" data-en="Languages">Keeled</span>
+        <div class="langrow">
+          <span class="nm" data-et="Eesti" data-en="Estonian">Eesti</span>
+          <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span>
+          <span class="lvl" data-et="emakeel" data-en="native">emakeel</span>
+        </div>
+        <div class="langrow">
+          <span class="nm" data-et="Inglise" data-en="English">Inglise</span>
+          <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span>
+          <span class="lvl" data-et="hea — dokumentatsioon ja suhtlus" data-en="good — docs and communication">hea — dokumentatsioon ja suhtlus</span>
+        </div>
+        <div class="langrow" style="margin-bottom:0">
+          <span class="nm" data-et="Vene" data-en="Russian">Vene</span>
+          <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+          <span class="lvl" data-et="suhtlustasand" data-en="conversational">suhtlustasand</span>
+        </div>
+      </div>
+      <div class="skillbox">
+        <span class="lab d" data-et="Lisainfo" data-en="Extras">Lisainfo</span>
+        <ul style="list-style:none; padding:0; margin:0">
+          <li style="font-size:.93rem; margin-bottom:6px;"><strong data-et="Juhiluba:" data-en="Driving licence:">Juhiluba:</strong> <span data-et="omandamisel" data-en="in progress">omandamisel</span></li>
+          <li style="font-size:.93rem; margin-bottom:6px;"><strong data-et="Töökoht:" data-en="Location:">Töökoht:</strong> <span data-et="Võru ja ümbrus, kaugtöö sobib" data-en="Võru area, remote works too">Võru ja ümbrus, kaugtöö sobib</span></li>
+          <li style="font-size:.93rem; margin-bottom:6px;"><strong data-et="Otsin:" data-en="Looking for:">Otsin:</strong> <span data-et="praktikat või osakoormusega tööd helpdeskis / sysadminina" data-en="internship or part-time helpdesk / sysadmin work">praktikat või osakoormusega tööd helpdeskis / sysadminina</span></li>
+          <li style="font-size:.93rem"><strong data-et="Huvid:" data-en="Interests:">Huvid:</strong> <span data-et="kodulabor, muusikatootmine, lennusimulaatorid" data-en="home lab, music production, flight simulation">kodulabor, muusikatootmine, lennusimulaatorid</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>Viktor Vahtra · anviktor2411.github.io</footer>
+
+</div>
+
+<script>
+  var lang = 'et';
+  function toggleLang() {
+    lang = lang === 'et' ? 'en' : 'et';
+    document.getElementById('langBtn').textContent = lang === 'et' ? 'EN' : 'ET';
+    document.documentElement.lang = lang;
+    var n = document.querySelectorAll('[data-et]');
+    for (var i = 0; i < n.length; i++) {
+      var t = n[i].getAttribute('data-' + lang);
+      if (t) n[i].innerHTML = t;
+    }
+  }
+</script>
 </body>
 </html>
