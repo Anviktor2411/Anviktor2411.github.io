@@ -41,6 +41,26 @@
   }
   .bar a:hover, .bar button:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
   .bar .go { background: var(--lime); }
+  .pdfwrap { position: relative; display: inline-block; }
+  .pdfmenu {
+    display: none;
+    position: absolute; right: 0; top: calc(100% + 8px);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    min-width: 190px; z-index: 50;
+  }
+  .pdfmenu.open { display: block; }
+  .pdfmenu a {
+    display: block; padding: 11px 16px;
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .04em;
+    color: var(--ink); text-decoration: none;
+    border: none; box-shadow: none; background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+  }
+  .pdfmenu a:last-child { border-bottom: none; }
+  .pdfmenu a:hover { background: var(--lime); transform: none; box-shadow: none; }
 
   .hero {
     background: var(--violet);
@@ -175,7 +195,14 @@
   <div class="bar">
     <a href="../" data-et="← Portfoolio" data-en="← Portfolio">← Portfoolio</a>
     <button onclick="toggleLang()" id="langBtn">EN</button>
-    <a class="go" href="Viktor_Vahtra_CV.pdf" target="_blank">↓ PDF</a>
+    <span class="pdfwrap">
+      <button class="go" onclick="togglePdf(event)">↓ PDF</button>
+      <span class="pdfmenu" id="pdfmenu">
+        <a href="Viktor_Vahtra_CV_ET.pdf" target="_blank">🇪🇪 Eesti keeles</a>
+        <a href="Viktor_Vahtra_CV_EN.pdf" target="_blank">🇬🇧 In English</a>
+        <a href="Viktor_Vahtra_CV.pdf" target="_blank" data-et="Mõlemad keeled" data-en="Both languages">Mõlemad keeled</a>
+      </span>
+    </span>
   </div>
 
   <!-- HERO -->
@@ -369,6 +396,14 @@
 </div>
 
 <script>
+  function togglePdf(e) {
+    e.stopPropagation();
+    document.getElementById('pdfmenu').classList.toggle('open');
+  }
+  document.addEventListener('click', function () {
+    document.getElementById('pdfmenu').classList.remove('open');
+  });
+
   var lang = 'et';
   function toggleLang() {
     lang = lang === 'et' ? 'en' : 'et';
