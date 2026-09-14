@@ -53,7 +53,7 @@
     letter-spacing: 0.05em;
   }
   .nav-logo span { color: var(--muted); }
-  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul { list-style: none; display: flex; gap: 1.75rem; }
   nav ul a {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -64,6 +64,7 @@
     transition: color 0.2s;
   }
   nav ul a:hover { color: var(--accent); }
+  nav ul a.cv-link { color: var(--accent2); }
   .lang-switch {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -117,7 +118,7 @@
   .hero-desc {
     font-size: 1.1rem;
     color: var(--muted);
-    max-width: 520px;
+    max-width: 560px;
     margin-bottom: 2.5rem;
     font-weight: 400;
   }
@@ -199,6 +200,47 @@
     border-radius: 3px;
     padding: 3px 10px;
   }
+
+  /* KOGEMUS */
+  .exp-item {
+    border-left: 2px solid var(--border);
+    padding: 0 0 2rem 1.75rem;
+    position: relative;
+  }
+  .exp-item:last-child { padding-bottom: 0; }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -6px; top: 6px;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .exp-title { font-size: 1.1rem; font-weight: 600; color: var(--heading); }
+  .exp-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 3px 0 8px;
+  }
+  .exp-desc { font-size: 14px; color: var(--muted); }
+  .exp-list { list-style: none; margin-top: 0.7rem; }
+  .exp-list li {
+    font-size: 13.5px;
+    color: var(--muted);
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .exp-list li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 10px;
+  }
+
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
   .project-card {
     background: var(--bg2);
@@ -220,10 +262,18 @@
   }
   .project-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-2px); }
   .project-card:hover::before { opacity: 1; }
-  .project-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.75rem; }
+  .project-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.4rem; }
+  .project-kind {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
   .project-title { font-size: 1.05rem; font-weight: 600; color: var(--heading); margin-bottom: 0.5rem; }
   .project-desc { font-size: 14px; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; }
   .project-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -233,8 +283,6 @@
     border-radius: 3px;
     padding: 2px 8px;
   }
-  .project-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); text-decoration: none; letter-spacing: 0.05em; }
-  .project-link:hover { text-decoration: underline; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
   .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 15px; }
@@ -251,6 +299,8 @@
     gap: 8px;
   }
   .cert-list li::before { content: '▸'; color: var(--accent); font-size: 10px; }
+  .cert-list li.planned { color: var(--muted); }
+  .cert-list li.planned::before { color: var(--muted); }
   .cert-list-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -259,6 +309,17 @@
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
+  .facts { margin-top: 2rem; }
+  .facts .row {
+    display: flex;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .facts .row .k { color: var(--accent); min-width: 110px; }
+  .facts .row .v { color: var(--text); }
   #contact { border-top: 1px solid var(--border); }
   .contact-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
   .contact-item {
@@ -290,9 +351,10 @@
   <div class="nav-logo"><span>~/</span>viktor-vahtra</div>
   <ul>
     <li><a href="#about" data-et="Meist" data-en="About">Meist</a></li>
+    <li><a href="#experience" data-et="Kogemus" data-en="Experience">Kogemus</a></li>
     <li><a href="#skills" data-et="Oskused" data-en="Skills">Oskused</a></li>
     <li><a href="#projects" data-et="Projektid" data-en="Projects">Projektid</a></li>
-    <li><a href="cv/" data-et="CV" data-en="CV">CV</a></li>
+    <li><a href="cv/" class="cv-link">CV</a></li>
     <li><a href="#contact" data-et="Kontakt" data-en="Contact">Kontakt</a></li>
   </ul>
   <button class="lang-switch" onclick="toggleLang()">EN</button>
@@ -302,13 +364,14 @@
   <div class="hero-content">
     <div class="status-badge">
       <span class="status-dot"></span>
-      <span data-et="Otsib praktikat" data-en="Looking for internship">Otsib praktikat</span>
+      <span data-et="Otsib praktikat · vaba 2026" data-en="Open to internships · available 2026">Otsib praktikat · vaba 2026</span>
     </div>
-    <div class="hero-tag">Networking &amp; Sysadmin</div>
+    <div class="hero-tag">Helpdesk &amp; Sysadmin</div>
     <h1>Viktor<br><span class="accent">Vahtra</span></h1>
-    <p class="hero-desc" data-et="IT-spetsialist, kes ehitab usaldusväärseid võrke ja haldab servereid. Huvitun automatiseerimisest, Linuxist ja turvalisusest." data-en="IT specialist building reliable networks and managing servers. Passionate about automation, Linux and cybersecurity.">IT-spetsialist, kes ehitab usaldusväärseid võrke ja haldab servereid. Huvitun automatiseerimisest, Linuxist ja turvalisusest.</p>
+    <p class="hero-desc" data-et="IT-süsteemide nooremspetsialisti tudeng, lõpetan 2027. Parandan arvuteid oma kuulutuste kaudu, olen andnud IT-abi endises koolis ja pean kodus Proxmoxi laborit." data-en="IT systems student, graduating 2027. I repair computers through my own ads, have given IT support at my former school, and run a Proxmox lab at home.">IT-süsteemide nooremspetsialisti tudeng, lõpetan 2027. Parandan arvuteid oma kuulutuste kaudu, olen andnud IT-abi endises koolis ja pean kodus Proxmoxi laborit.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary" data-et="Vaata projekte" data-en="View projects">Vaata projekte</a>
+      <a href="cv/" class="btn btn-primary" data-et="Vaata CV-d" data-en="View CV">Vaata CV-d</a>
+      <a href="#projects" class="btn btn-outline" data-et="Vaata projekte" data-en="View projects">Vaata projekte</a>
       <a href="#contact" class="btn btn-outline" data-et="Võta ühendust" data-en="Get in touch">Võta ühendust</a>
     </div>
   </div>
@@ -320,28 +383,98 @@
     <h2 data-et="Kes ma olen" data-en="Who I am">Kes ma olen</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p data-et="Olen IT-tudeng / spetsialist, kes on kirglik <strong>võrgutehnika</strong> ja <strong>serverihalduse</strong> vastu. Mulle meeldib lahendada keerulisi probleeme ja ehitada töökindlaid süsteeme." data-en="I'm an IT student passionate about <strong>networking</strong> and <strong>server administration</strong>. I enjoy solving complex problems and building reliable systems.">Olen IT-tudeng / spetsialist, kes on kirglik <strong>võrgutehnika</strong> ja <strong>serverihalduse</strong> vastu. Mulle meeldib lahendada keerulisi probleeme ja ehitada töökindlaid süsteeme.</p>
-        <p data-et="Kogemus nii <strong>Linuxi</strong> kui <strong>Windowsi</strong> serveritega, võrkude konfigureerimisega (VLAN, routing, firewall) ja monitoorimislahenduste ülesseadmisega." data-en="Experience with both <strong>Linux</strong> and <strong>Windows</strong> servers, network configuration (VLAN, routing, firewall) and setting up monitoring solutions.">Kogemus nii <strong>Linuxi</strong> kui <strong>Windowsi</strong> serveritega, võrkude konfigureerimisega (VLAN, routing, firewall) ja monitoorimislahenduste ülesseadmisega.</p>
-        <p data-et="Praegu õpin <strong>Tartu Rakenduslik Kolledž</strong> IT erialal ja otsin praktikavõimalusi või esimest töökohta IT valdkonnas." data-en="Currently studying IT at <strong>Tartu University of Applied Sciences</strong> and looking for internship opportunities or a first job in IT.">Praegu õpin <strong>Tartu Rakenduslik Kolledž</strong> IT erialal ja otsin praktikavõimalusi või esimest töökohta IT valdkonnas.</p>
+        <p data-et="Õpin <strong>Tartu Rakenduslikus Kolledžis</strong> IT-süsteemide nooremspetsialistiks ja lõpetan 2027. Õppekava katab võrgunduse, Windows Serveri, Linuxi ja küberturbe — iga teema lõpeb praktilise laboriga." data-en="I study to become an <strong>IT systems junior specialist</strong> at Tartu Rakenduslik Kolledž, graduating in 2027. The curriculum covers networking, Windows Server, Linux and cybersecurity — every topic ends with a hands-on lab.">Õpin <strong>Tartu Rakenduslikus Kolledžis</strong> IT-süsteemide nooremspetsialistiks ja lõpetan 2027. Õppekava katab võrgunduse, Windows Serveri, Linuxi ja küberturbe — iga teema lõpeb praktilise laboriga.</p>
+        <p data-et="Kooli kõrvalt võtan <strong>oma kuulutuste kaudu</strong> vastu arvutiremondi tellimusi eraklientidelt ja lahendan need algusest lõpuni. Kodus jookseb <strong>Proxmoxi labor</strong>, kus katsetan teenuseid enne, kui neid päris töös vaja läheb." data-en="Alongside school I take on computer repair jobs from private clients <strong>through my own ads</strong> and handle them end to end. At home I run a <strong>Proxmox lab</strong> where I try out services before I need them for real.">Kooli kõrvalt võtan <strong>oma kuulutuste kaudu</strong> vastu arvutiremondi tellimusi eraklientidelt ja lahendan need algusest lõpuni. Kodus jookseb <strong>Proxmoxi labor</strong>, kus katsetan teenuseid enne, kui neid päris töös vaja läheb.</p>
+        <p data-et="Otsin praktikakohta või osakoormusega tööd <strong>helpdeskis või sysadminina</strong> — kohta, kus saaks kasutajaid päriselt aidata ja servereid hallata." data-en="I'm looking for an internship or part-time work in <strong>helpdesk or systems administration</strong> — somewhere I can help real users and manage real servers.">Otsin praktikakohta või osakoormusega tööd <strong>helpdeskis või sysadminina</strong> — kohta, kus saaks kasutajaid päriselt aidata ja servereid hallata.</p>
       </div>
       <div>
-        <div class="cert-list-title" data-et="Sertifikaadid &amp; haridus" data-en="Certifications &amp; education">Sertifikaadid &amp; haridus</div>
+        <div class="cert-list-title" data-et="Sertifikaadid" data-en="Certifications">Sertifikaadid</div>
         <ul class="cert-list">
-          <li data-et="Tartu Rakenduslik Kolledž — IT" data-en="Tartu University of Applied Sciences — IT">Tartu Rakenduslik Kolledž — IT</li>
-          <li data-et="Cisco CCNA (plaanis)" data-en="Cisco CCNA (planned)">Cisco CCNA (plaanis)</li>
           <li>CompTIA Network+</li>
           <li>Linux Essentials</li>
+          <li class="planned" data-et="Cisco CCNA — plaanis" data-en="Cisco CCNA — planned">Cisco CCNA — plaanis</li>
         </ul>
+        <div class="facts">
+          <div class="row"><span class="k" data-et="Haridus" data-en="Education">Haridus</span><span class="v">Tartu RK · ITS24 · 2024—2027</span></div>
+          <div class="row"><span class="k" data-et="Asukoht" data-en="Location">Asukoht</span><span class="v" data-et="Võru, Eesti" data-en="Võru, Estonia">Võru, Eesti</span></div>
+          <div class="row"><span class="k" data-et="Juhiluba" data-en="Licence">Juhiluba</span><span class="v" data-et="omandamisel" data-en="in progress">omandamisel</span></div>
+          <div class="row"><span class="k" data-et="Keeled" data-en="Languages">Keeled</span><span class="v" data-et="eesti · inglise · vene" data-en="Estonian · English · Russian">eesti · inglise · vene</span></div>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-label" data-et="02 — Kogemus" data-en="02 — Experience">02 — Kogemus</div>
+    <h2 data-et="Kus olen käed külge pannud" data-en="Where I've got my hands dirty">Kus olen käed külge pannud</h2>
+
+    <div class="exp-item">
+      <div class="exp-title" data-et="Arvutiremont ja IT-abi" data-en="Computer repair and IT support">Arvutiremont ja IT-abi</div>
+      <div class="exp-meta" data-et="Iseseisev · oma kuulutuste kaudu" data-en="Independent · through my own ads">Iseseisev · oma kuulutuste kaudu</div>
+      <p class="exp-desc" data-et="Võtan kuulutuste kaudu vastu tellimusi eraklientidelt ja lahendan need algusest lõpuni — diagnoos, parandus, üleandmine koos selgitusega." data-en="I take on jobs from private clients through my own ads and handle them end to end — diagnosis, repair, and handover with an explanation.">Võtan kuulutuste kaudu vastu tellimusi eraklientidelt ja lahendan need algusest lõpuni — diagnoos, parandus, üleandmine koos selgitusega.</p>
+      <ul class="exp-list">
+        <li data-et="Windowsi puhas paigaldus ja seadistus kliendi arvutisse" data-en="Clean Windows installation and setup on a client machine">Windowsi puhas paigaldus ja seadistus kliendi arvutisse</li>
+        <li data-et="WiFi-ühenduse tõrke diagnoosimine ja parandamine" data-en="Diagnosed and fixed a WiFi connectivity fault">WiFi-ühenduse tõrke diagnoosimine ja parandamine</li>
+        <li data-et="Vana, mittekäivituva arvuti taastamine töökorda" data-en="Brought an old, non-booting computer back to working order">Vana, mittekäivituva arvuti taastamine töökorda</li>
+        <li data-et="Probleemi selgitamine kliendile arusaadavas keeles" data-en="Explaining the problem to the client in plain language">Probleemi selgitamine kliendile arusaadavas keeles</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-title" data-et="IT-tugi koolis" data-en="IT support at school">IT-tugi koolis</div>
+      <div class="exp-meta" data-et="Vabatahtlik · endine kool" data-en="Volunteer · former school">Vabatahtlik · endine kool</div>
+      <p class="exp-desc" data-et="Aitasin kooli IT-poolel: arvutite tõrkeotsing, tarkvara paigaldus ja seadistamine ning igapäevane abi õpetajatele ja õpilastele." data-en="Helped on the school's IT side: troubleshooting computers, installing and configuring software, and day-to-day help for teachers and students.">Aitasin kooli IT-poolel: arvutite tõrkeotsing, tarkvara paigaldus ja seadistamine ning igapäevane abi õpetajatele ja õpilastele.</p>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-title" data-et="Kodulabor" data-en="Home lab">Kodulabor</div>
+      <div class="exp-meta" data-et="Isiklik projekt · pidev" data-en="Personal project · ongoing">Isiklik projekt · pidev</div>
+      <p class="exp-desc" data-et="Proxmoxil põhinev virtualiseerimiskeskkond Linuxi ja Windowsi virtuaalmasinatega. Suurem osa allpool loetletud oskustest on siit pärit." data-en="A Proxmox-based virtualisation setup with Linux and Windows VMs. Most of the skills listed below came from here.">Proxmoxil põhinev virtualiseerimiskeskkond Linuxi ja Windowsi virtuaalmasinatega. Suurem osa allpool loetletud oskustest on siit pärit.</p>
+      <div class="project-tags" style="margin-top:0.7rem">
+        <span class="project-tag">Proxmox</span>
+        <span class="project-tag">Linux VM</span>
+        <span class="project-tag">Windows VM</span>
+        <span class="project-tag">Networking</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-title" data-et="DJ ja muusikaprodutsent — “doesvic”" data-en="DJ and music producer — “doesvic”">DJ ja muusikaprodutsent — “doesvic”</div>
+      <p class="exp-desc" data-et="Esinemised ja produktsioon. Tähtajad, tehnika ülesseadmine surve all ja kiire tõrkeotsing live-olukorras — needsamad oskused kuluvad ära ka IT-toes." data-en="Performing and producing. Deadlines, setting up gear under pressure and fast troubleshooting in a live situation — the same skills carry over to IT support.">Esinemised ja produktsioon. Tähtajad, tehnika ülesseadmine surve all ja kiire tõrkeotsing live-olukorras — needsamad oskused kuluvad ära ka IT-toes.</p>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="section-wrap">
-    <div class="section-label" data-et="02 — Oskused" data-en="02 — Skills">02 — Oskused</div>
+    <div class="section-label" data-et="03 — Oskused" data-en="03 — Skills">03 — Oskused</div>
     <h2 data-et="Tehnoloogiad" data-en="Technologies">Tehnoloogiad</h2>
     <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title" data-et="Kasutajatugi" data-en="User support">Kasutajatugi</div>
+        <div class="skill-tags">
+          <span class="skill-tag" data-et="Tõrkeotsing" data-en="Troubleshooting">Tõrkeotsing</span>
+          <span class="skill-tag" data-et="Windowsi paigaldus" data-en="Windows deployment">Windowsi paigaldus</span>
+          <span class="skill-tag" data-et="Riistvara vahetus" data-en="Hardware swaps">Riistvara vahetus</span>
+          <span class="skill-tag" data-et="Andmete taastamine" data-en="Data recovery">Andmete taastamine</span>
+          <span class="skill-tag" data-et="Kliendisuhtlus" data-en="Client communication">Kliendisuhtlus</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title" data-et="Süsteemid" data-en="Systems">Süsteemid</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Windows 10/11</span>
+          <span class="skill-tag">Windows Server</span>
+          <span class="skill-tag">Debian</span>
+          <span class="skill-tag">Ubuntu</span>
+          <span class="skill-tag">Proxmox</span>
+          <span class="skill-tag">Active Directory</span>
+          <span class="skill-tag">Group Policy</span>
+          <span class="skill-tag">BSD</span>
+        </div>
+      </div>
       <div class="skill-group">
         <div class="skill-group-title" data-et="Võrgud" data-en="Networking">Võrgud</div>
         <div class="skill-tags">
@@ -350,20 +483,21 @@
           <span class="skill-tag">BGP/OSPF</span>
           <span class="skill-tag">Firewall</span>
           <span class="skill-tag">VPN</span>
+          <span class="skill-tag">DNS</span>
+          <span class="skill-tag">DHCP</span>
+          <span class="skill-tag">WiFi</span>
           <span class="skill-tag">Wireshark</span>
-          <span class="skill-tag">VNC</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title" data-et="Süsteemid" data-en="Systems">Süsteemid</div>
+        <div class="skill-group-title" data-et="Turvalisus" data-en="Security">Turvalisus</div>
         <div class="skill-tags">
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">Windows Server</span>
-          <span class="skill-tag">Debian</span>
-          <span class="skill-tag">Ubuntu</span>
-          <span class="skill-tag">Active Directory</span>
-          <span class="skill-tag">Proxmox</span>
-          <span class="skill-tag">Group Policy</span>
+          <span class="skill-tag">BitLocker</span>
+          <span class="skill-tag">MS Defender</span>
+          <span class="skill-tag">ESET</span>
+          <span class="skill-tag">Malwarebytes</span>
+          <span class="skill-tag">Hardening</span>
+          <span class="skill-tag">Backup/Recovery</span>
         </div>
       </div>
       <div class="skill-group">
@@ -374,19 +508,17 @@
           <span class="skill-tag">Spiceworks</span>
           <span class="skill-tag">Landscape</span>
           <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Bash</span>
           <span class="skill-tag">Git</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title" data-et="Turvalisus" data-en="Security">Turvalisus</div>
+        <div class="skill-group-title" data-et="Skriptimine" data-en="Scripting">Skriptimine</div>
         <div class="skill-tags">
-          <span class="skill-tag">BitLocker</span>
-          <span class="skill-tag">Malwarebytes</span>
-          <span class="skill-tag">ESET</span>
-          <span class="skill-tag">MS Defender</span>
-          <span class="skill-tag">Hardening</span>
-          <span class="skill-tag">Backup/Recovery</span>
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">PowerShell</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML/CSS</span>
         </div>
       </div>
     </div>
@@ -395,57 +527,68 @@
 
 <section id="projects">
   <div class="section-wrap">
-    <div class="section-label" data-et="03 — Projektid" data-en="03 — Projects">03 — Projektid</div>
-    <h2 data-et="Mida olen teinud" data-en="What I've built">Mida olen teinud</h2>
+    <div class="section-label" data-et="04 — Projektid" data-en="04 — Projects">04 — Projektid</div>
+    <h2 data-et="Mida olen ehitanud" data-en="What I've built">Mida olen ehitanud</h2>
     <div class="projects-grid">
 
       <div class="project-card">
         <div class="project-num">// 001</div>
-        <div class="project-title" data-et="Zabbix Monitooring" data-en="Zabbix Monitoring">Zabbix Monitooring</div>
-        <p class="project-desc" data-et="Zabbix monitooringu serveri seadistamine Debian VM-il. MySQL andmebaas, agendi konfiguratsioon ja võrguseadmete jälgimine." data-en="Set up a Zabbix monitoring server on a Debian VM. MySQL database, agent configuration and network device monitoring.">Zabbix monitooringu serveri seadistamine Debian VM-il. MySQL andmebaas, agendi konfiguratsioon ja võrguseadmete jälgimine.</p>
+        <div class="project-kind" data-et="Kooli laboritöö" data-en="Coursework lab">Kooli laboritöö</div>
+        <div class="project-title" data-et="Zabbix monitooring" data-en="Zabbix monitoring">Zabbix monitooring</div>
+        <p class="project-desc" data-et="Zabbix serveri püstitamine Debiani virtuaalmasinal — MySQL andmebaas, agentide seadistus ja võrguseadmete jälgimine koos hoiatustega." data-en="Stood up a Zabbix server on a Debian VM — MySQL backend, agent configuration and network device monitoring with alerting.">Zabbix serveri püstitamine Debiani virtuaalmasinal — MySQL andmebaas, agentide seadistus ja võrguseadmete jälgimine koos hoiatustega.</p>
         <div class="project-tags">
           <span class="project-tag">Debian</span>
           <span class="project-tag">Zabbix</span>
           <span class="project-tag">MySQL</span>
         </div>
-        <a href="https://github.com/Anviktor2411/zabbix-monitoring-setup" class="project-link">→ github.com/Anviktor2411</a>
       </div>
 
       <div class="project-card">
         <div class="project-num">// 002</div>
-        <div class="project-title" data-et="Linux Praktikum" data-en="Linux Lab">Linux Praktikum</div>
-        <p class="project-desc" data-et="Debian virtuaalmasina seadistamine — põhikäsud, SSH, SCP failiedastus, teenuste haldus ja APT paketihaldur." data-en="Debian VM setup — core commands, SSH, SCP file transfer, service management and APT package manager.">Debian virtuaalmasina seadistamine — põhikäsud, SSH, SCP failiedastus, teenuste haldus ja APT paketihaldur.</p>
+        <div class="project-kind" data-et="Kooli laboritöö" data-en="Coursework lab">Kooli laboritöö</div>
+        <div class="project-title" data-et="Linuxi praktikum" data-en="Linux lab">Linuxi praktikum</div>
+        <p class="project-desc" data-et="Debiani VM-i seadistus nullist: kasutajad ja õigused, SSH, SCP failiedastus, teenuste haldus systemd-ga ja APT paketihaldus." data-en="Debian VM setup from scratch: users and permissions, SSH, SCP transfers, systemd service management and APT package handling.">Debiani VM-i seadistus nullist: kasutajad ja õigused, SSH, SCP failiedastus, teenuste haldus systemd-ga ja APT paketihaldus.</p>
         <div class="project-tags">
           <span class="project-tag">Linux</span>
           <span class="project-tag">Bash</span>
           <span class="project-tag">SSH</span>
           <span class="project-tag">SCP</span>
         </div>
-        <a href="https://github.com/Anviktor2411/linux-praktikum" class="project-link">→ github.com/Anviktor2411</a>
       </div>
 
       <div class="project-card">
         <div class="project-num">// 003</div>
-        <div class="project-title">Minecraft Server</div>
-        <p class="project-desc" data-et="PaperMC serveri seadistamine ja haldamine. Port forwarding, mängijate õiguste haldus ja serveri konfiguratsioon." data-en="Set up and managed a PaperMC server. Port forwarding, player permissions management and server configuration.">PaperMC serveri seadistamine ja haldamine. Port forwarding, mängijate õiguste haldus ja serveri konfiguratsioon.</p>
+        <div class="project-kind" data-et="Isiklik projekt" data-en="Personal project">Isiklik projekt</div>
+        <div class="project-title" data-et="See portfoolio" data-en="This portfolio">See portfoolio</div>
+        <p class="project-desc" data-et="Kahekeelne portfooliosait koos admin-paneeliga, majutatud GitHub Pages peal. Kirjutatud puhta HTML/CSS/JS-iga ilma raamistikuta." data-en="Bilingual portfolio site with an admin panel, hosted on GitHub Pages. Written in plain HTML/CSS/JS with no framework.">Kahekeelne portfooliosait koos admin-paneeliga, majutatud GitHub Pages peal. Kirjutatud puhta HTML/CSS/JS-iga ilma raamistikuta.</p>
+        <div class="project-tags">
+          <span class="project-tag">HTML/CSS</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">GitHub Pages</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 004</div>
+        <div class="project-kind" data-et="Isiklik projekt" data-en="Personal project">Isiklik projekt</div>
+        <div class="project-title">PaperMC <span data-et="server" data-en="server">server</span></div>
+        <p class="project-desc" data-et="Mänguserveri seadistus ja haldus: pordisuunamine, kasutajaõigused, varundus ja jõudluse häälestamine." data-en="Game server setup and administration: port forwarding, user permissions, backups and performance tuning.">Mänguserveri seadistus ja haldus: pordisuunamine, kasutajaõigused, varundus ja jõudluse häälestamine.</p>
         <div class="project-tags">
           <span class="project-tag">Java</span>
           <span class="project-tag">Linux</span>
           <span class="project-tag">Networking</span>
         </div>
-        <a href="https://github.com/Anviktor2411/minecraft-server" class="project-link">→ github.com/Anviktor2411</a>
       </div>
 
       <div class="project-card">
-        <div class="project-num">// 004</div>
-        <div class="project-title" data-et="IT Tugi — Arvutite Parandamine" data-en="IT Support — PC Repair">IT Tugi — Arvutite Parandamine</div>
-        <p class="project-desc" data-et="Vabatahtlik IT-tugi koolis ning vanade arvutite taastamine. Tarkvara ja riistvara diagnostika, komponentide vahetus, OS reinstall." data-en="Volunteer IT support at school and restoring old computers. Software and hardware diagnostics, component replacement, OS reinstall.">Vabatahtlik IT-tugi koolis ning vanade arvutite taastamine. Tarkvara ja riistvara diagnostika, komponentide vahetus, OS reinstall.</p>
+        <div class="project-num">// 005</div>
+        <div class="project-kind" data-et="Isiklik projekt" data-en="Personal project">Isiklik projekt</div>
+        <div class="project-title">XPUIPC IP Manager</div>
+        <p class="project-desc" data-et="Pythoni tööriist X-Plane 12 pluginate IP-seadistuste haldamiseks — väike asi, mis säästab iga kord käsitsi failide muutmist." data-en="A Python tool for managing X-Plane 12 plugin IP settings — a small thing that saves editing config files by hand every time.">Pythoni tööriist X-Plane 12 pluginate IP-seadistuste haldamiseks — väike asi, mis säästab iga kord käsitsi failide muutmist.</p>
         <div class="project-tags">
-          <span class="project-tag">Windows</span>
-          <span class="project-tag">Hardware</span>
-          <span class="project-tag">Troubleshooting</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">CLI</span>
         </div>
-        <a href="https://github.com/Anviktor2411/arvutite-parandamine" class="project-link">→ github.com/Anviktor2411</a>
       </div>
 
     </div>
@@ -454,12 +597,13 @@
 
 <section id="contact">
   <div class="section-wrap">
-    <div class="section-label" data-et="04 — Kontakt" data-en="04 — Contact">04 — Kontakt</div>
+    <div class="section-label" data-et="05 — Kontakt" data-en="05 — Contact">05 — Kontakt</div>
     <h2 data-et="Võta ühendust" data-en="Get in touch">Võta ühendust</h2>
     <div class="contact-grid">
       <a href="mailto:viktorvahtra@gmail.com" class="contact-item">✉ viktorvahtra@gmail.com</a>
       <a href="https://github.com/Anviktor2411" class="contact-item">⌥ github.com/Anviktor2411</a>
       <a href="https://www.linkedin.com/in/viktor-vahtra-35840b410/" class="contact-item">in linkedin.com/in/viktor-vahtra</a>
+      <a href="cv/Viktor_Vahtra_CV.pdf" class="contact-item" data-et="↓ Lae CV alla (PDF)" data-en="↓ Download CV (PDF)">↓ Lae CV alla (PDF)</a>
     </div>
   </div>
 </section>
